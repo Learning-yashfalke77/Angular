@@ -1,0 +1,82 @@
+<h1>Directives</h1>
+<!-- If else -->
+<!-- element with false condition will not present in Dom  -->
+<!-- This method is preferred -->
+<div *ngIf="courses.length > 0; then coursesList else noCourses">
+</div>
+<ng-template #coursesList>
+  List of Courses
+</ng-template>
+<ng-template #noCourses>
+  No courses yet
+</ng-template>
+
+<!-- Hidden -->
+<!-- Hidden is present in the dom -->
+<div [hidden]="courses.length==0">
+  List of Courses 1
+</div>
+<div [hidden]="courses.length>0">
+  No Courses yet
+</div>
+
+<!-- Switch Case -->
+<!-- use ng switch if we want o compare with multiple property value -->
+<ul class="nav nav-pills">
+  <li [class.active]="viewMode=='map'"><button (click)="viewMode='map'" class="btn btn-primary">Map View</button></li>
+  <li [class.active]="viewMode=='list'"><button (click)="viewMode='list'" class="btn btn-light">List View</button></li>
+</ul>
+<div [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'map'">Map View Content</div>
+  <div *ngSwitchCase="'list'">List View Content</div>
+  <div *ngSwitchDefault>Default</div>
+</div>
+
+<!-- ng For -->
+<!-- Use track y if there is any performance issue -->
+<button class="btn btn-warning" (click)="onAdd()">Add Course</button>
+<ul>
+  <li *ngFor="let course of courses; index as i;even as e;trackBy: trackCourse">
+    {{i}}-{{course.name}} {{e}}
+    <button class="btn btn-error" (click)="onRemove(course)">Remove</button>
+  </li>
+</ul>
+
+<!-- Ng Class -->
+<!-- Ng Class Return as [ngClass]="{key: value}" -->
+<!-- here key is the name of the class -->
+<!-- here value is the class should should be rendered or not -->
+
+<!-- Ng Style  -->
+<!-- Without using ng style -->
+<button [style.backgroundColor]="canSave ? 'blue': 'gray'" [style.color]="canSave ? 'white': 'black'"
+  [style.fontWeight]="canSave ? 'bold': 'normal'">
+  Save
+</button>
+
+<!-- using ng style -->
+<button [ngStyle]="{backgroundColor: canSave ? 'blue' : 'gray', color: canSave ? 'white' : 'black'}">
+  save using ng style
+</button>
+
+<!-- safe travelsal operator -->
+<!-- In object properties there may be any properties who is not present at starting but after sometimes it will be there like after calling APIs , then safe travelsal is used -->
+<h1>
+  <!-- {{task.assignee?.name}} -->
+</h1>
+
+
+<!-- Writing Custom Directive -->
+<!-- Using angular cli to create custom directive: ng g d input-format -->
+<h1>Phone Number</h1>
+<!-- If there are multiple property for directive -->
+<!-- <input type="text" class="form-control" appInputFormat [format]="'uppercase'"> -->
+<!-- If there single property for directive -->
+<input type="text" class="form-control" [appInputFormat]="'uppercase'">
+
+
+<!-- -------------------------------- exercise zippy component ---------------------------------- -->
+<br><br><br>
+<app-zippy title="Shipping Details">
+  Shipping Details Content
+</app-zippy>

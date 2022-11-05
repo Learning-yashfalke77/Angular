@@ -1,0 +1,15 @@
+<h1>Angular</h1>
+<courses></courses>
+<authors></authors>
+<app-favourite [is-favourite]="post.isFavourite" (change)="onFavouriteChange($event)"></app-favourite>
+<app-panel>
+    <!-- <div class="heading">MyHeading</div> -->
+    <!-- Instead of div we can use ng-container beacuse it will replace only content not any div -->
+    <ng-container class="heading">
+        My Heading
+    </ng-container>
+    <!-- <div class="body">My Body...........</div> -->
+    <ng-container class="body">
+        MyBody...................
+    </ng-container>
+</app-panel>

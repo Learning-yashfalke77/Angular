@@ -1,0 +1,48 @@
+<p>courses works!</p>
+<!-- {{}} -- String Interopolations -->
+<p>{{"Title: " + title}}</p>
+<p>{{getTitle()}}</p>
+
+<!-- Property Binding - one way binding from component to Dom -->
+<p [textContent]="title"></p>
+
+<!-- Use string interopolation when displaying text and property binding for setting property for elements -->
+
+<!-- attribute binding -->
+<table>
+    <tr>
+        <td [attr.colSpan]="colSpan"></td>
+    </tr>
+</table>
+
+<!-- Directives is used to manipulate the dom -->
+<ul>
+    <!-- Whenever we use directives that modifies i.e adding or removing the dom * is used -->
+    <li *ngFor="let course of courses">{{course}}</li>
+</ul>
+
+<!-- Bootstrap -->
+<!-- Class Binding -->
+<button class="btn btn-primary" [class.active]="isActive" [class.btn-secondary]="secondary">Angular Button</button>
+
+<!-- Style Binding -->
+<button class="btn btn-warning" [style.backgroundColor]="isActive ? 'blue' : 'red'">Style Binding</button>
+
+<!-- button Binding, Event Binding -->
+<button class="btn btn-warning" (click)="onSave($event)">Button Binding</button>
+
+<!-- Event Filtering, Template Variables -->
+<input type="text" #name (keyup.enter)="onKeyUp(name)">
+
+<!-- property binding Template Variables -->
+<input type="email" [(ngModel)]="email" (keyup.enter)="onKeyUp1()">
+
+<!-- Builtin Pipes -->
+<h1>Information --- Pipes Built in</h1>
+<label for="">{{myCourses.title | uppercase}}</label><br>
+<label for="">{{myCourses.rating | number:'1.2-2' }}</label><br>
+<!-- Here 1 means one integer and after dot 2-2 means maxpossible-min possible  decimal should be-->
+<label for="">{{myCourses.students | number}}</label><br>
+<label for="">{{myCourses.price | currency}}</label><br>
+<label for="">{{myCourses.releaseDate | date:'shortDate'}}</label><br>
+<!--  Can define Customizable Pipe -->

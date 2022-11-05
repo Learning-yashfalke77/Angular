@@ -1,0 +1,4 @@
+<svg class="icon" (click)="handleClick()">
+    <use *ngIf="isFavourite" [attr.xlink:href]="favouriteLink"></use>
+    <use *ngIf="!isFavourite" [attr.xlink:href]="favouriteLinkOutline"></use>
+</svg>
