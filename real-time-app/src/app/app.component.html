@@ -1,0 +1,23 @@
+<ul>
+    <li *ngFor="let c of course$ | async">
+        {{c.name}} - {{c.author}} ({{c.price}})
+    </li>
+</ul>
+<button (click)="ngOnDestroy()">Offline</button>
+
+<p>
+    {{singleCourse$ | async | json}}
+</p>
+
+<!-- as alias keyword  -->
+<!-- problem -->
+<ul *ngIf="$any(singleCourse$ | async) as singleCourse">
+    <li>{{singleCourse.name}}</li>
+    <li>{{singleCourse.author}}</li>
+    <li>{{singleCourse.price}}</li>
+</ul>
+
+<input type="text" (keyup.enter)="add(course)" #course placeholder="createe">
+<input type="text" (keyup.enter)="update(course1)" #course1 placeholder="updat">
+
+<button (click)="delete()">delete</button>
